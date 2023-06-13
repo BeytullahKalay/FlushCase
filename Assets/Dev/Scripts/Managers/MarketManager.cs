@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class MarketManager : MonoBehaviour
 {
-    [SerializeField] private int money = 0;
-
     [SerializeField] private float timeBetweenSells = .1f;
 
     private float _nextSellTime = float.MinValue;
@@ -36,7 +34,7 @@ public class MarketManager : MonoBehaviour
         var collectible = _carrier.GetLastCollectibleOnList();
         var salePrice = (int)collectible.GemData.GemCost +
                         (int)MathF.Ceiling(collectible.CollectibleGameObject.transform.localScale.x * 100);
-        money += salePrice;
+        EventManager.UpdateGoldUI?.Invoke(salePrice);
         Destroy(collectible.CollectibleGameObject);
     }
 }
