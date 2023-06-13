@@ -12,19 +12,24 @@ public class PlayerCarrier : MonoSingleton<PlayerCarrier>
 
     private List<ICollectible> _collectedList = new List<ICollectible>();
 
+    private float _lastYPos;
+
     public void Carry(ICollectible collectible)
     {
         // add to collectedList
         _collectedList.Add(collectible);
-
-
+        
         // set parent
         collectible.CollectibleGameObject.transform.SetParent(carrierTransform);
 
         // jump animation
-        collectible.CollectibleGameObject.transform.DOLocalJump(
-            Vector3.zero + Vector3.up * (_collectedList.Count - 1), jumpPower, 1, jumpDuration);
-        
+        var localScale = collectible.CollectibleGameObject.transform.localScale;
+        collectible.CollectibleGameObject.transform.DOLocalJump(Vector3.zero + Vector3.up * (_lastYPos + localScale.x),
+            jumpPower, 1, jumpDuration);
+
+        // increase last Y position
+        _lastYPos += localScale.x + localScale.x / 2;
+
         // rotate animation
         collectible.CollectibleGameObject.transform.DOLocalRotate(Vector3.zero, jumpDuration);
     }
@@ -38,6 +43,12 @@ public class PlayerCarrier : MonoSingleton<PlayerCarrier>
     {
         var lastCollectible = _collectedList.Last();
         _collectedList.Remove(lastCollectible);
+        DecreaseLastYPos(lastCollectible.CollectibleGameObject.transform.localScale.x);
         return lastCollectible;
+    }
+
+    private void DecreaseLastYPos(float removingCollectibleScale)
+    {
+        _lastYPos -= removingCollectibleScale + removingCollectibleScale / 2;
     }
 }
