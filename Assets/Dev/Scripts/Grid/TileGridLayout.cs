@@ -11,6 +11,16 @@ public class TileGridLayout : MonoBehaviour
     private void SetupGrid()
     {
 
+        // when object duplicated tile list will be empty,
+        // this statement will control this case
+        if (_tileList.Count <= 0)
+        {
+            foreach (Transform child in transform)
+            {
+                _tileList.Add(child.gameObject);
+            }
+        }
+
         foreach (var tile in _tileList)
         {
             DestroyImmediate(tile);
