@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933641b5b7e038741a02c57475e35a85, type: 3}
   m_Name: PinkGemData
   m_EditorClassIdentifier: 
-  gemType: 1
+  gemName: Pink Gem
   gemCost: 20
+  gemType: 1
+  gemIcon: {fileID: 21300000, guid: 4209b8e5d5dda8444a2b422625a11706, type: 3}
   gemObject: {fileID: 832639058891920999, guid: 0d7edf22de7070c4f9bcf5d7abfdd35c,
     type: 3}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -26,5 +27,17 @@ public class PlayerCarrier : MonoSingleton<PlayerCarrier>
         
         // rotate animation
         collectible.CollectibleGameObject.transform.DOLocalRotate(Vector3.zero, jumpDuration);
+    }
+
+    public bool IsCollectedEmpty()
+    {
+        return _collectedList.Count <= 0;
+    }
+
+    public ICollectible GetLastCollectibleOnList()
+    {
+        var lastCollectible = _collectedList.Last();
+        _collectedList.Remove(lastCollectible);
+        return lastCollectible;
     }
 }

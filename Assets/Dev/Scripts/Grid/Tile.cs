@@ -20,7 +20,7 @@ public class Tile : MonoBehaviour, ITile
         GemData = GetRandomGemData();
         var obj = Instantiate(GemData.GemObject, transform.position + Vector3.up, Quaternion.identity, _gemHolder);
         _gem = obj.GetComponent<ICollectible>();
-        _gem.OnSpawn();
+        _gem.Initialize(GemData);
     }
 
     private Transform CreateEmptyObjInGameObject()

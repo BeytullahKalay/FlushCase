@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933641b5b7e038741a02c57475e35a85, type: 3}
   m_Name: GreenGemData
   m_EditorClassIdentifier: 
-  gemType: 0
+  gemName: Green Gem
   gemCost: 20
+  gemType: 0
+  gemIcon: {fileID: 21300000, guid: 5231502c07e016244b71cc674b5dd6b9, type: 3}
   gemObject: {fileID: 3020863404591115434, guid: b4f2dd674ff6f5d4cbdc565ccc19d285,
     type: 3}

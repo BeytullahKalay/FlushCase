@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour, ICollectible
 {
-    public GemData GemData { get; }
+    public GemData GemData { get; set; }
     public GameObject CollectibleGameObject { get; set; }
 
-    private const float START_SCALE = .1f;
+    private const float START_SCALE = 0;
     private const float MIN_HARVES_SCALE = .25f;
     private const float SCALE_TIME = 5f;
 
@@ -17,10 +17,11 @@ public class Gem : MonoBehaviour, ICollectible
         CollectibleGameObject = gameObject;
     }
 
-    public void OnSpawn()
+    public void Initialize(GemData data)
     {
         transform.localScale = Vector3.zero * START_SCALE;
         _tween = transform.DOScale(Vector3.one, SCALE_TIME);
+        GemData = data;
     }
 
     public void Collect()
