@@ -34,7 +34,9 @@ public class MarketManager : MonoBehaviour
         var collectible = _carrier.GetLastCollectibleOnList();
         var salePrice = (int)collectible.GemData.GemCost +
                         (int)MathF.Ceiling(collectible.CollectibleGameObject.transform.localScale.x * 100);
+        
         EventManager.UpdateGoldUI?.Invoke(salePrice);
+        EventManager.GemCollected?.Invoke(collectible.GemData);
         Destroy(collectible.CollectibleGameObject);
     }
 }

@@ -48,6 +48,6 @@ public class Tile : MonoBehaviour, ITile
 
     private GemData GetRandomGemData()
     {
-        return GameManager.Instance.GetRandomGemData;
+        return GemDataManager.Instance.GetRandomGemData;
     }
 }

@@ -9,7 +9,6 @@ public class GemData : ScriptableObject
     [SerializeField] private GemType gemType;
     [SerializeField] private Sprite gemIcon;
     [SerializeField] private GameObject gemObject;
-    
 
     public GameObject GemObject => gemObject;
     public GemType GemType => gemType;
