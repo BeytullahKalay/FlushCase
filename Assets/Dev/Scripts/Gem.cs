@@ -10,7 +10,8 @@ public class Gem : MonoBehaviour, ICollectible
     private const float MIN_HARVES_SCALE = .25f;
     private const float SCALE_TIME = 5f;
 
-    private Tween _tween;
+    private Tween _scaleTween;
+    private Tween _rotateTween;
 
     private void Awake()
     {
@@ -20,13 +21,16 @@ public class Gem : MonoBehaviour, ICollectible
     public void Initialize(GemData data)
     {
         transform.localScale = Vector3.zero * START_SCALE;
-        _tween = transform.DOScale(Vector3.one, SCALE_TIME);
+        _scaleTween = transform.DOScale(Vector3.one, SCALE_TIME);
+        _rotateTween = transform.DOLocalRotate(Vector3.up * 360, 5f, RotateMode.FastBeyond360)
+            .SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
         GemData = data;
     }
 
     public void Collect()
     {
-        _tween?.Kill();
+        _scaleTween?.Kill();
+        _rotateTween?.Kill();
         PlayerCarrier.Instance.Carry(this);
     }
 
