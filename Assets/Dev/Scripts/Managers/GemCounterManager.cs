@@ -80,7 +80,7 @@ public class GemCounterManager : MonoBehaviour
         foreach (var item in _canvasItems)
         {
             if (item.GemData == comingGemData)
-                item.UpdateItem();
+                item.UpdateItemText();
         }
     }
 }

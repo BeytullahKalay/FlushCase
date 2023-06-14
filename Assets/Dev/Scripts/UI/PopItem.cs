@@ -21,7 +21,7 @@ public class PopItem : MonoBehaviour
         gemCount.text = "0";
     }
 
-    public void UpdateItem()
+    public void UpdateItemText()
     {
         gemCount.text = PlayerPrefs.GetInt(_gemData.GemType.ToString()).ToString();
     }
